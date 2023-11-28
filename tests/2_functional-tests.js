@@ -94,7 +94,6 @@ suite('Functional Tests', function () {
           .get('/api/books/' + invalidId)
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            console.log(res)
             assert.deepEqual(res.text, 'no book exists')
             done();
           });
@@ -105,8 +104,6 @@ suite('Functional Tests', function () {
           .get('/api/books/' + postBook._id)
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            console.log('this is res body')
-            console.log(res.body);
             assert.property(res.body, 'title', 'The result of GET the specific book should contain title');
             assert.property(res.body, '_id', 'The result of GET the specific book should contain _id');
             assert.property(res.body, 'comments', 'The result of GET the specific book should contain comments');
@@ -125,8 +122,6 @@ suite('Functional Tests', function () {
           .send({ comment: 'Comment to the book of test' })
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            console.log('this is res body')
-            console.log(res.body);
             assert.property(res.body, 'title', 'The result of GET the specific book should contain title');
             assert.property(res.body, '_id', 'The result of GET the specific book should contain _id');
             assert.property(res.body, 'comments', 'The result of GET the specific book should contain comments');
